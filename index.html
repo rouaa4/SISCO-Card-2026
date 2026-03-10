@@ -20,7 +20,10 @@
       color:#222;
     }
 
-    .app{ max-width:780px; margin:0 auto; }
+    .app{
+      max-width:780px;
+      margin:0 auto;
+    }
 
     h2{
       text-align:center;
@@ -48,6 +51,7 @@
       font-family:"Roboto", sans-serif;
       font-weight:400;
     }
+
     input:focus{
       outline:none;
       border-color:#0c4a6e;
@@ -66,7 +70,11 @@
       width:180px;
     }
 
-    .card-area{ display:flex; justify-content:center; margin-top:20px; }
+    .card-area{
+      display:flex;
+      justify-content:center;
+      margin-top:20px;
+    }
 
     .card{
       width:500px;
@@ -77,37 +85,44 @@
       background:url('./assets/eid-card-base.png') center/cover no-repeat;
     }
 
-    /* الاسم تحت الخط — المعاينة */
+    /* الاسم في المعاينة */
     .name-place{
       position:absolute;
-      bottom:23px;               /* تم ضبطها حسب طلبك */
+      bottom:21px;
       width:100%;
       text-align:center;
       font-family:"Roboto", sans-serif;
-      font-size:16px;            /* الحجم المطلوب */
-      font-weight:600;           /* Bold خفيف */
-      color:#6A5843;             /* اللون البني */
+      font-size:16px;
+      font-weight:600;
+      color:#6A5843;
       text-shadow:none;
       display:none;
       z-index:5;
     }
 
-    /* EXPORT (تصدير الصورة النهائية 600×600) */
-    .export-zone{ position:fixed; left:-9999px; top:-9999px; width:600px; height:600px; }
+    /* EXPORT (الصورة النهائية) */
+    .export-zone{
+      position:fixed;
+      left:-9999px;
+      top:-9999px;
+      width:600px;
+      height:600px;
+    }
 
     .export-card{
       position:relative;
-      width:600px; height:600px;
+      width:600px;
+      height:600px;
       background:url('./assets/eid-card-base.png') center/cover no-repeat;
     }
 
     .export-name{
       position:absolute;
-      bottom:34px;               /* مكافئ لـ bottom:23px في المعاينة */
+      bottom:30px; /* مكافئ لـ 21px في المعاينة */
       width:100%;
       text-align:center;
       font-family:"Roboto", sans-serif;
-      font-size:20px;            /* يكافئ 16px على حجم التصدير */
+      font-size:20px; /* يعادل 16px */
       font-weight:600;
       color:#6A5843;
       text-shadow:none;
@@ -118,6 +133,7 @@
 </head>
 
 <body>
+
   <div class="app">
 
     <h2>SISCO Eid Mubarak 2026 — اكتب اسمك هنا 👇 / Type your name below 👇</h2>
@@ -170,6 +186,7 @@
 
     const zone = document.querySelector(".export-card");
     const canvas = await html2canvas(zone, { scale:1, useCORS:true });
+
     const a = document.createElement("a");
     a.download = v + ".png";
     a.href = canvas.toDataURL();
