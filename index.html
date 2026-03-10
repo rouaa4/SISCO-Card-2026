@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>SISCO Eid Mubarak 2026</title>
 
-  <!-- Roboto font -->
+  <!-- خطوط -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <!-- html2canvas -->
@@ -88,19 +88,19 @@
     /* الاسم تحت الخط — المعاينة */
     .name-place{
       position:absolute;
-      bottom:28px;                  /* الموضع المطلوب */
+      bottom:28px;
       width:100%;
       text-align:center;
       font-family:"Roboto", sans-serif;
-      font-size:19px;               /* الحجم الجديد */
-      font-weight:600;              /* Bold خفيف */
-      color:#6A5843;                /* اللون البني */
+      font-size:19px;
+      font-weight:600;
+      color:#6A5843;
       text-shadow:none;
       display:none;
       z-index:5;
     }
 
-    /* EXPORT */
+    /* نسخة التصدير */
     .export-zone{
       position:fixed;
       left:-9999px;
@@ -118,11 +118,11 @@
 
     .export-name{
       position:absolute;
-      bottom:40px;                  /* موضع مشابه للمعاينة */
+      bottom:40px;
       width:100%;
       text-align:center;
       font-family:"Roboto", sans-serif;
-      font-size:24px;               /* يعادل 19px في التصدير */
+      font-size:24px;
       font-weight:600;
       color:#6A5843;
       text-shadow:none;
@@ -179,7 +179,6 @@
 
   input.addEventListener("input", updateName);
   input.addEventListener("keyup", updateName);
-  input.addEventListener("change", updateName);
 
   document.getElementById("downloadBtn").onclick = async () => {
     const v = input.value.trim();
