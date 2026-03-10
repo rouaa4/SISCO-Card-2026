@@ -6,10 +6,10 @@
   <title>SISCO Eid Mubarak 2026</title>
 
   <!-- Noto Kufi Arabic -->
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@300;400;500;600&display=swap" rel="stylesheet">
+  https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@300;400;500;600&display=swap
 
   <!-- html2canvas -->
-  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js
 
   <style>
     body{
@@ -20,7 +20,10 @@
       color:#222;
     }
 
-    .app{ max-width:780px; margin:0 auto; }
+    .app{
+      max-width:780px;
+      margin:0 auto;
+    }
 
     h2{
       text-align:center;
@@ -47,6 +50,12 @@
       margin-bottom:10px;
       font-family:"Noto Kufi Arabic", sans-serif;
       font-weight:400;
+    }
+
+    input:focus{
+      outline:none;
+      border-color:#0c4a6e;
+      box-shadow:0 0 0 3px #0c4a6e33;
     }
 
     .btn{
@@ -76,21 +85,25 @@
       background:url('./assets/eid-card-base.png') center/cover no-repeat;
     }
 
-    /* --- Preview name (on website) --- */
+    /* =======================
+       Preview Name (Website)
+       ======================= */
     .name-place{
       position:absolute;
-      bottom:14px;                   /* ← preview stays perfect */
+      bottom:17px;   /* كما طلبتي */
       width:100%;
       text-align:center;
+      font-family:"Noto Kufi Arabic", sans-serif;
       font-size:16px;
       font-weight:600;
       color:#6A5843;
-      font-family:"Noto Kufi Arabic", sans-serif;
       display:none;
       z-index:5;
     }
 
-    /* --- Exported PNG name --- */
+    /* =======================
+       Export Name (PNG file)
+       ======================= */
     .export-zone{
       position:fixed;
       left:-9999px;
@@ -108,13 +121,13 @@
 
     .export-name{
       position:absolute;
-      bottom:20px;                 /* ← THE FIX (was 24 → perfect = 20px) */
+      bottom:23px;   /* مكافئ ومضبوط للصورة بعد التحميل */
       width:100%;
       text-align:center;
-      font-size:20px;              /* equals 16px in preview */
+      font-family:"Noto Kufi Arabic", sans-serif;
+      font-size:20px;  /* يعادل 16px في التصدير */
       font-weight:600;
       color:#6A5843;
-      font-family:"Noto Kufi Arabic", sans-serif;
       display:none;
       z-index:5;
     }
@@ -172,7 +185,7 @@
     if(!v){ alert("اكتب الاسم أولاً"); return; }
 
     const zone = document.querySelector(".export-card");
-    const canvas = await html2canvas(zone, { scale:1, useCORS:true });
+    const canvas = await html2canvas(zone, { scale:2, useCORS:true });
 
     const a = document.createElement("a");
     a.download = v + ".png";
