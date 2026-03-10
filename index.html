@@ -6,10 +6,10 @@
   <title>SISCO Eid Mubarak 2026</title>
 
   <!-- Noto Kufi Arabic -->
-  https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@300;400;500;600&display=swap
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <!-- html2canvas -->
-  https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 
   <style>
     body{
@@ -49,12 +49,6 @@
       font-weight:400;
     }
 
-    input:focus{
-      outline:none;
-      border-color:#0c4a6e;
-      box-shadow:0 0 0 3px #0c4a6e33;
-    }
-
     .btn{
       background:#0c4a6e;
       color:#fff;
@@ -82,21 +76,21 @@
       background:url('./assets/eid-card-base.png') center/cover no-repeat;
     }
 
-    /* Preview name */
+    /* --- Preview name (on website) --- */
     .name-place{
       position:absolute;
-      bottom:14px;   /* ثابت مثل ما تبينه في الموقع */
+      bottom:14px;                   /* ← preview stays perfect */
       width:100%;
       text-align:center;
-      font-family:"Noto Kufi Arabic", sans-serif;
       font-size:16px;
       font-weight:600;
       color:#6A5843;
+      font-family:"Noto Kufi Arabic", sans-serif;
       display:none;
       z-index:5;
     }
 
-    /* Export photo */
+    /* --- Exported PNG name --- */
     .export-zone{
       position:fixed;
       left:-9999px;
@@ -114,13 +108,13 @@
 
     .export-name{
       position:absolute;
-      bottom:19px;   /* ← الضبط الجديد لحل مشكلة نزول الاسم */
+      bottom:20px;                 /* ← THE FIX (was 24 → perfect = 20px) */
       width:100%;
       text-align:center;
-      font-family:"Noto Kufi Arabic", sans-serif;
-      font-size:20px; /* مكافئ لـ 16px */
+      font-size:20px;              /* equals 16px in preview */
       font-weight:600;
       color:#6A5843;
+      font-family:"Noto Kufi Arabic", sans-serif;
       display:none;
       z-index:5;
     }
@@ -172,7 +166,6 @@
   }
 
   input.addEventListener("input", updateName);
-  input.addEventListener("keyup", updateName);
 
   document.getElementById("downloadBtn").onclick = async () => {
     const v = input.value.trim();
