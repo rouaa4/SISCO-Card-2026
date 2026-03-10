@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <title>SISCO Eid Mubarak 2026</title>
 
-  <!-- Noto Kufi Arabic -->
-  https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@300;400;500;600&display=swap
+  <!-- Load Noto Kufi Arabic -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <!-- html2canvas -->
-  https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js
+  <!-- Load html2canvas -->
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 
   <style>
     body{
@@ -85,25 +86,22 @@
       background:url('./assets/eid-card-base.png') center/cover no-repeat;
     }
 
-    /* ------- Preview Name (Website) ------- */
+    /* Preview name */
     .name-place{
       position:absolute;
-      bottom:13px; /* ← حسب طلبك */
+      bottom:13px;
       width:100%;
       text-align:center;
       font-family:"Noto Kufi Arabic", sans-serif;
       font-size:16px;
       font-weight:600;
       color:#6A5843;
-
-      /* Shadow الجديد الغامق */
       text-shadow:0px 1px 3px rgba(0,0,0,0.45);
-
       display:none;
       z-index:5;
     }
 
-    /* ------- Export Name (PNG file) ------- */
+    /* Export PNG */
     .export-zone{
       position:fixed;
       left:-9999px;
@@ -121,47 +119,46 @@
 
     .export-name{
       position:absolute;
-      bottom:17px; /* ← EXPORT مضبوط حسب طلبك */
+      bottom:17px; /* كما طلبتي */
       width:100%;
       text-align:center;
       font-family:"Noto Kufi Arabic", sans-serif;
-      font-size:20px; /* يعادل 16px */
+      font-size:20px;
       font-weight:600;
       color:#6A5843;
-
-      /* Shadow الجديد الغامق */
       text-shadow:0px 1px 3px rgba(0,0,0,0.45);
-
       display:none;
       z-index:5;
     }
+
   </style>
 </head>
 
 <body>
 
-  <div class="app">
+<div class="app">
 
-    <h2>SISCO Eid Mubarak 2026 — اكتب اسمك هنا 👇 / Type your name below 👇</h2>
+  <h2>SISCO Eid Mubarak 2026 — اكتب اسمك هنا 👇 / Type your name below 👇</h2>
 
-    <div class="panel">
-      <input id="fullName" placeholder="اكتب الاسم هنا | Type your name here">
-      <button class="btn" id="downloadBtn">Download Card</button>
-    </div>
-
-    <div class="panel card-area">
-      <div class="card">
-        <div id="namePreview" class="name-place"></div>
-      </div>
-    </div>
-
-    <div class="export-zone">
-      <div class="export-card">
-        <div id="nameExport" class="export-name"></div>
-      </div>
-    </div>
-
+  <div class="panel">
+    <input id="fullName" placeholder="اكتب الاسم هنا | Type your name here">
+    <button class="btn" id="downloadBtn">Download Card</button>
   </div>
+
+  <div class="panel card-area">
+    <div class="card">
+      <div id="namePreview" class="name-place"></div>
+    </div>
+  </div>
+
+  <div class="export-zone">
+    <div class="export-card">
+      <div id="nameExport" class="export-name"></div>
+    </div>
+  </div>
+
+</div>
+
 
 <script>
   const input = document.getElementById("fullName");
@@ -189,13 +186,11 @@
     if(!v){ alert("اكتب الاسم أولاً"); return; }
 
     const zone = document.querySelector(".export-card");
-
-    /* جودة أعلى للتصدير */
     const canvas = await html2canvas(zone, { scale:2, useCORS:true });
 
     const a = document.createElement("a");
     a.download = v + ".png";
-    a.href = canvas.toDataURL("image/png");
+    a.href = canvas.toDataURL();
     a.click();
   };
 </script>
