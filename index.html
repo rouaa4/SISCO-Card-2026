@@ -5,18 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>SISCO Eid Mubarak 2026</title>
 
-  <!-- Roboto font -->
-  https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600&display=swap
+  <!-- Noto Kufi Arabic -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <!-- html2canvas -->
-  https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 
   <style>
     body{
       margin:0;
       padding:20px;
       background:#f8f3e9;
-      font-family:"Roboto", sans-serif;
+      font-family:"Noto Kufi Arabic", sans-serif;
       color:#222;
     }
 
@@ -31,6 +31,7 @@
       margin-bottom:20px;
       font-weight:500;
       color:#0f172a;
+      font-family:"Noto Kufi Arabic", sans-serif;
     }
 
     .panel{
@@ -48,7 +49,7 @@
       border:2px solid #0c4a6e55;
       font-size:18px;
       margin-bottom:10px;
-      font-family:"Roboto", sans-serif;
+      font-family:"Noto Kufi Arabic", sans-serif;
       font-weight:400;
     }
 
@@ -68,6 +69,7 @@
       font-weight:600;
       cursor:pointer;
       width:180px;
+      font-family:"Noto Kufi Arabic", sans-serif;
     }
 
     .card-area{
@@ -85,22 +87,21 @@
       background:url('./assets/eid-card-base.png') center/cover no-repeat;
     }
 
-    /* الاسم في المعاينة */
+    /* Preview name */
     .name-place{
       position:absolute;
-      bottom:17px;               /* ← تم رفعه */
+      bottom:17px;               /* ← كما طلبتي */
       width:100%;
       text-align:center;
-      font-family:"Roboto", sans-serif;
+      font-family:"Noto Kufi Arabic", sans-serif;
       font-size:16px;
       font-weight:600;
       color:#6A5843;
-      text-shadow:none;
       display:none;
       z-index:5;
     }
 
-    /* EXPORT 600×600 */
+    /* Export name */
     .export-zone{
       position:fixed;
       left:-9999px;
@@ -118,17 +119,17 @@
 
     .export-name{
       position:absolute;
-      bottom:27px;               /* ← مكافئ لـ 17px في المعاينة */
+      bottom:27px;               /* مكافئ للمعاينة (17px) */
       width:100%;
       text-align:center;
-      font-family:"Roboto", sans-serif;
-      font-size:20px;            /* يكافئ 16px بعد التحجيم */
+      font-family:"Noto Kufi Arabic", sans-serif;
+      font-size:20px;            /* حجم مناسب للتصدير */
       font-weight:600;
       color:#6A5843;
-      text-shadow:none;
       display:none;
       z-index:5;
     }
+
   </style>
 </head>
 
