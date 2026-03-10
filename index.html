@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>SISCO Eid Mubarak 2026</title>
 
-  <!-- خط Noto Kufi Arabic -->
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <!-- Noto Kufi Arabic -->
+  https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@300;400;500;600&display=swap
 
   <!-- html2canvas -->
-  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js
 
   <style>
     body{
@@ -20,10 +20,7 @@
       color:#222;
     }
 
-    .app{
-      max-width:780px;
-      margin:0 auto;
-    }
+    .app{ max-width:780px; margin:0 auto; }
 
     h2{
       text-align:center;
@@ -48,8 +45,8 @@
       border:2px solid #0c4a6e55;
       font-size:18px;
       margin-bottom:10px;
-      font-weight:400;
       font-family:"Noto Kufi Arabic", sans-serif;
+      font-weight:400;
     }
 
     input:focus{
@@ -85,24 +82,23 @@
       background:url('./assets/eid-card-base.png') center/cover no-repeat;
     }
 
-    /* الاسم في المعاينة */
+    /* Preview name */
     .name-place{
       position:absolute;
-      bottom:14px;               /* ← الموضع الذي طلبتيه */
+      bottom:14px;   /* ثابت مثل ما تبينه في الموقع */
       width:100%;
       text-align:center;
       font-family:"Noto Kufi Arabic", sans-serif;
       font-size:16px;
-      font-weight:600;           /* Bold خفيف */
+      font-weight:600;
       color:#6A5843;
-      text-shadow:none;
       display:none;
       z-index:5;
     }
 
-    /* EXPORT (الصورة النهائية 600×600) */
+    /* Export photo */
     .export-zone{
-      position:flex;
+      position:fixed;
       left:-9999px;
       top:-9999px;
       width:600px;
@@ -118,14 +114,13 @@
 
     .export-name{
       position:absolute;
-      bottom:24px;               /* مكافئ لـ bottom 14px في المعاينة */
+      bottom:19px;   /* ← الضبط الجديد لحل مشكلة نزول الاسم */
       width:100%;
       text-align:center;
       font-family:"Noto Kufi Arabic", sans-serif;
-      font-size:20px;            /* مكافئ لحجم 16px */
+      font-size:20px; /* مكافئ لـ 16px */
       font-weight:600;
       color:#6A5843;
-      text-shadow:none;
       display:none;
       z-index:5;
     }
