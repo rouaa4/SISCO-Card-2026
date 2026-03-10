@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>SISCO Eid Mubarak 2026</title>
 
-  <!-- Load Noto Kufi Arabic -->
+  <!-- Load Noto Kufi Arabic font -->
   <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <!-- Load html2canvas -->
@@ -21,10 +20,7 @@
       color:#222;
     }
 
-    .app{
-      max-width:780px;
-      margin:0 auto;
-    }
+    .app{ max-width:780px; margin:0 auto; }
 
     h2{
       text-align:center;
@@ -86,13 +82,12 @@
       background:url('./assets/eid-card-base.png') center/cover no-repeat;
     }
 
-    /* Preview name */
+    /* الاسم في المعاينة */
     .name-place{
       position:absolute;
       bottom:13px;
       width:100%;
       text-align:center;
-      font-family:"Noto Kufi Arabic", sans-serif;
       font-size:16px;
       font-weight:600;
       color:#6A5843;
@@ -101,7 +96,7 @@
       z-index:5;
     }
 
-    /* Export PNG */
+    /* الاسم داخل الصورة عند التحميل */
     .export-zone{
       position:fixed;
       left:-9999px;
@@ -119,10 +114,9 @@
 
     .export-name{
       position:absolute;
-      bottom:17px; /* كما طلبتي */
+      bottom:17px;
       width:100%;
       text-align:center;
-      font-family:"Noto Kufi Arabic", sans-serif;
       font-size:20px;
       font-weight:600;
       color:#6A5843;
@@ -136,29 +130,28 @@
 
 <body>
 
-<div class="app">
+  <div class="app">
 
-  <h2>SISCO Eid Mubarak 2026 — اكتب اسمك هنا 👇 / Type your name below 👇</h2>
+    <h2>SISCO Eid Mubarak 2026 — اكتب اسمك هنا 👇 / Type your name below 👇</h2>
 
-  <div class="panel">
-    <input id="fullName" placeholder="اكتب الاسم هنا | Type your name here">
-    <button class="btn" id="downloadBtn">Download Card</button>
-  </div>
-
-  <div class="panel card-area">
-    <div class="card">
-      <div id="namePreview" class="name-place"></div>
+    <div class="panel">
+      <input id="fullName" placeholder="اكتب الاسم هنا | Type your name here">
+      <button class="btn" id="downloadBtn">Download Card</button>
     </div>
-  </div>
 
-  <div class="export-zone">
-    <div class="export-card">
-      <div id="nameExport" class="export-name"></div>
+    <div class="panel card-area">
+      <div class="card">
+        <div id="namePreview" class="name-place"></div>
+      </div>
     </div>
+
+    <div class="export-zone">
+      <div class="export-card">
+        <div id="nameExport" class="export-name"></div>
+      </div>
+    </div>
+
   </div>
-
-</div>
-
 
 <script>
   const input = document.getElementById("fullName");
@@ -190,7 +183,7 @@
 
     const a = document.createElement("a");
     a.download = v + ".png";
-    a.href = canvas.toDataURL();
+    a.href = canvas.toDataURL("image/png");
     a.click();
   };
 </script>
