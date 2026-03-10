@@ -6,10 +6,10 @@
   <title>SISCO Eid Mubarak 2026</title>
 
   <!-- Roboto font -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600&display=swap" rel="stylesheet">
+  https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600&display=swap
 
   <!-- html2canvas -->
-  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js
 
   <style>
     body{
@@ -88,7 +88,7 @@
     /* الاسم في المعاينة */
     .name-place{
       position:absolute;
-      bottom:21px;
+      bottom:17px;               /* ← تم رفعه */
       width:100%;
       text-align:center;
       font-family:"Roboto", sans-serif;
@@ -100,7 +100,7 @@
       z-index:5;
     }
 
-    /* EXPORT (الصورة النهائية) */
+    /* EXPORT 600×600 */
     .export-zone{
       position:fixed;
       left:-9999px;
@@ -118,11 +118,11 @@
 
     .export-name{
       position:absolute;
-      bottom:30px; /* مكافئ لـ 21px في المعاينة */
+      bottom:27px;               /* ← مكافئ لـ 17px في المعاينة */
       width:100%;
       text-align:center;
       font-family:"Roboto", sans-serif;
-      font-size:20px; /* يعادل 16px */
+      font-size:20px;            /* يكافئ 16px بعد التحجيم */
       font-weight:600;
       color:#6A5843;
       text-shadow:none;
@@ -186,7 +186,6 @@
 
     const zone = document.querySelector(".export-card");
     const canvas = await html2canvas(zone, { scale:1, useCORS:true });
-
     const a = document.createElement("a");
     a.download = v + ".png";
     a.href = canvas.toDataURL();
