@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>SISCO Eid Mubarak 2026</title>
 
-  <!-- Noto Kufi Arabic -->
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <!-- خط Noto Kufi Arabic -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
   <!-- html2canvas -->
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
@@ -31,7 +31,6 @@
       margin-bottom:20px;
       font-weight:500;
       color:#0f172a;
-      font-family:"Noto Kufi Arabic", sans-serif;
     }
 
     .panel{
@@ -49,8 +48,8 @@
       border:2px solid #0c4a6e55;
       font-size:18px;
       margin-bottom:10px;
-      font-family:"Noto Kufi Arabic", sans-serif;
       font-weight:400;
+      font-family:"Noto Kufi Arabic", sans-serif;
     }
 
     input:focus{
@@ -69,7 +68,6 @@
       font-weight:600;
       cursor:pointer;
       width:180px;
-      font-family:"Noto Kufi Arabic", sans-serif;
     }
 
     .card-area{
@@ -87,23 +85,24 @@
       background:url('./assets/eid-card-base.png') center/cover no-repeat;
     }
 
-    /* Preview name */
+    /* الاسم في المعاينة */
     .name-place{
       position:absolute;
-      bottom:14px;               /* ← كما طلبتي */
+      bottom:14px;               /* ← الموضع الذي طلبتيه */
       width:100%;
       text-align:center;
       font-family:"Noto Kufi Arabic", sans-serif;
       font-size:16px;
-      font-weight:600;
+      font-weight:600;           /* Bold خفيف */
       color:#6A5843;
+      text-shadow:none;
       display:none;
       z-index:5;
     }
 
-    /* Export name */
+    /* EXPORT (الصورة النهائية 600×600) */
     .export-zone{
-      position:fixed;
+      position:flex;
       left:-9999px;
       top:-9999px;
       width:600px;
@@ -119,17 +118,17 @@
 
     .export-name{
       position:absolute;
-      bottom:27px;               /* مكافئ للمعاينة (17px) */
+      bottom:24px;               /* مكافئ لـ bottom 14px في المعاينة */
       width:100%;
       text-align:center;
       font-family:"Noto Kufi Arabic", sans-serif;
-      font-size:20px;            /* حجم مناسب للتصدير */
+      font-size:20px;            /* مكافئ لحجم 16px */
       font-weight:600;
       color:#6A5843;
+      text-shadow:none;
       display:none;
       z-index:5;
     }
-
   </style>
 </head>
 
@@ -179,7 +178,6 @@
 
   input.addEventListener("input", updateName);
   input.addEventListener("keyup", updateName);
-  input.addEventListener("change", updateName);
 
   document.getElementById("downloadBtn").onclick = async () => {
     const v = input.value.trim();
@@ -187,9 +185,10 @@
 
     const zone = document.querySelector(".export-card");
     const canvas = await html2canvas(zone, { scale:1, useCORS:true });
+
     const a = document.createElement("a");
     a.download = v + ".png";
-    a.href = canvas.toDataURL();
+    a.href = canvas.toDataURL("image/png");
     a.click();
   };
 </script>
