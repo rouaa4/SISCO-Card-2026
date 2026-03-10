@@ -6,7 +6,7 @@
   <title>SISCO Eid Mubarak 2026</title>
 
   <!-- Roboto font -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <!-- html2canvas -->
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
@@ -49,7 +49,7 @@
       font-size:18px;
       margin-bottom:10px;
       font-family:"Roboto", sans-serif;
-      font-weight:300;
+      font-weight:400;
     }
 
     input:focus{
@@ -65,7 +65,7 @@
       border-radius:10px;
       border:none;
       font-size:16px;
-      font-weight:700;
+      font-weight:600;
       cursor:pointer;
       width:180px;
     }
@@ -85,17 +85,16 @@
       background:url('./assets/eid-card-base.png') center/cover no-repeat;
     }
 
-    /* الاسم تحت الخط المزخرف (معاينة) */
+    /* الاسم تحت الخط — المعاينة */
     .name-place{
       position:absolute;
-      bottom:34px;                 /* تحت الخط بالضبط */
+      bottom:28px;                  /* الموضع المطلوب */
       width:100%;
       text-align:center;
       font-family:"Roboto", sans-serif;
-      font-size:22px;
-      font-weight:300;             /* Regular (مو Bold) */
-      color:#4A4A4A;
-      letter-spacing:0;
+      font-size:19px;               /* الحجم الجديد */
+      font-weight:600;              /* Bold خفيف */
+      color:#6A5843;                /* اللون البني */
       text-shadow:none;
       display:none;
       z-index:5;
@@ -109,25 +108,28 @@
       width:600px;
       height:600px;
     }
+
     .export-card{
       position:relative;
       width:600px;
       height:600px;
       background:url('./assets/eid-card-base.png') center/cover no-repeat;
     }
+
     .export-name{
       position:absolute;
-      bottom:50px;                /* نفس المكان لكن للصورة الأكبر */
+      bottom:40px;                  /* موضع مشابه للمعاينة */
       width:100%;
       text-align:center;
       font-family:"Roboto", sans-serif;
-      font-size:28px;             /* مكافئ 22px بعد التحجيم */
-      font-weight:300;
-      color:#4A4A4A;
+      font-size:24px;               /* يعادل 19px في التصدير */
+      font-weight:600;
+      color:#6A5843;
       text-shadow:none;
       display:none;
       z-index:5;
     }
+
   </style>
 </head>
 
