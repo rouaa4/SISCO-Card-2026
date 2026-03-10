@@ -5,158 +5,186 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>SISCO Eid Mubarak 2026</title>
 
-  <!-- Load Noto Kufi Arabic correctly -->
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <!-- Noto Kufi Arabic -->
+  https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@300;400;500;600&display=swap
 
-  <!-- Load html2canvas correctly -->
-  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <!-- html2canvas -->
+  https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js</script>
 
   <style>
-    :root{
-      --name-color:#6A5843;       /* لون الاسم */
-      --shadow:0 1px 3px rgba(0,0,0,.45);
-      --preview-bottom:14px;      /* مكان الاسم على الموقع */
-      --export-bottom:17px;       /* مكان الاسم في الصورة المصدّرة */
-    }
-
-    html,body{height:100%}
     body{
       margin:0;
       padding:20px;
       background:#f8f3e9;
-      font-family:"Noto Kufi Arabic", system-ui, -apple-system, Segoe UI, Arial, sans-serif;
+      font-family:"Noto Kufi Arabic", sans-serif;
       color:#222;
     }
 
-    .app{
-      max-width:780px;
-      margin:0 auto;
-      display:grid;
-      gap:16px;
-    }
+    .app{ max-width:780px; margin:0 auto; }
 
     h2{
       text-align:center;
       font-size:22px;
-      font-weight:600;
+      margin-bottom:20px;
+      font-weight:500;
       color:#0f172a;
-      margin:0 0 10px;
     }
 
     .panel{
       background:#fff;
       border-radius:12px;
       padding:16px;
-      box-shadow:0 4px 10px rgba(0,0,0,.08);
+      box-shadow:0 4px 10px rgba(0,0,0,.1);
+      margin-bottom:14px;
     }
 
-    .row{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
     input{
-      flex:1; min-width:260px;
+      width:100%;
       padding:12px 14px;
       border-radius:10px;
       border:2px solid #0c4a6e55;
       font-size:18px;
-      font-family:"Noto Kufi Arabic", sans-serif;
+      margin-bottom:10px;
+      font-weight:400;
     }
-    input:focus{outline:none; border-color:#0c4a6e; box-shadow:0 0 0 3px #0c4a6e33}
+
+    input:focus{
+      outline:none;
+      border-color:#0c4a6e;
+      box-shadow:0 0 0 3px #0c4a6e33;
+    }
 
     .btn{
-      background:#0c4a6e; color:#fff; border:0;
-      padding:12px 16px; border-radius:10px;
-      font-weight:700; cursor:pointer;
-    }
-
-    .preview-area{display:flex; justify-content:center}
-
-    .card{
-      width:500px; aspect-ratio:1/1;
-      position:relative; border-radius:14px; overflow:hidden;
-      background:url('./assets/eid-card-base.png') center/cover no-repeat;
-      border:1px solid #e6e0d6;
-    }
-
-    /* الاسم في المعاينة (على الموقع) */
-    .name-place{
-      position:absolute; left:0; right:0;
-      bottom:var(--preview-bottom);
-      text-align:center;
-      color:var(--name-color);
-      font-family:"Noto Kufi Arabic", sans-serif;
+      background:#0c4a6e;
+      color:#fff;
+      padding:12px 16px;
+      border-radius:10px;
+      border:none;
       font-size:16px;
       font-weight:600;
-      text-shadow:var(--shadow);
-      display:none; z-index:10;
+      cursor:pointer;
+      width:180px;
     }
 
-    /* منطقة التصدير 600×600 */
-    .export-stage{position:fixed; left:-99999px; top:-99999px; width:600px; height:600px}
-    .export-card{
-      position:relative; width:600px; height:600px;
+    .card-area{
+      display:flex;
+      justify-content:center;
+      margin-top:20px;
+    }
+
+    .card{
+      width:500px;
+      aspect-ratio:1/1;
+      border-radius:12px;
+      overflow:hidden;
+      position:relative;
       background:url('./assets/eid-card-base.png') center/cover no-repeat;
     }
 
-    /* الاسم داخل الصورة عند التحميل */
-    .export-name{
-      position:absolute; left:0; right:0;
-      bottom:var(--export-bottom);
+    /* Preview name */
+    .name-place{
+      position:absolute;
+      bottom:13px;
+      width:100%;
       text-align:center;
-      color:var(--name-color);
-      font-family:"Noto Kufi Arabic", sans-serif;
-      font-size:20px;            /* ≈ 16px في المعاينة */
+      font-size:16px;
       font-weight:600;
-      text-shadow:var(--shadow);
-      display:none; z-index:10;
+      color:#6A5843;
+      text-shadow:0px 1px 3px rgba(0,0,0,0.45);
+      display:none;
+      z-index:5;
+    }
+
+    /* EXPORT PNG */
+    .export-zone{
+      position:fixed;
+      left:-9999px;
+      top:-9999px;
+      width:600px;
+      height:600px;
+    }
+
+    .export-card{
+      position:relative;
+      width:600px;
+      height:600px;
+      background:url('./assets/eid-card-base.png') center/cover no-repeat;
+    }
+
+    .export-name{
+      position:absolute;
+      bottom:17px;
+      width:100%;
+      text-align:center;
+      font-size:20px;
+      font-weight:600;
+      color:#6A5843;
+      text-shadow:0px 1px 3px rgba(0,0,0,0.45);
+      display:none;
+      z-index:5;
     }
   </style>
 </head>
 
 <body>
+
   <div class="app">
-    <h2>👇 اكتب اسمك هنا / Type your name below 👇</h2>
+
+    <h2>SISCO Eid Mubarak 2026 — اكتب اسمك هنا 👇 / Type your name below 👇</h2>
 
     <div class="panel">
-      <div class="row">
-        <input id="fullName" placeholder="اكتب الاسم هنا | Type your name here" />
-        <button class="btn" id="downloadBtn">Download Card</button>
-      </div>
+      <input id="fullName" placeholder="اكتب الاسم هنا | Type your name here">
+      <button class="btn" id="downloadBtn">Download Card</button>
     </div>
 
-    <div class="panel preview-area">
+    <div class="panel card-area">
       <div class="card">
         <div id="namePreview" class="name-place"></div>
       </div>
     </div>
 
-    <!-- Export -->
-    <div class="export-stage" aria-hidden="true">
+    <div class="export-zone">
       <div class="export-card">
         <div id="nameExport" class="export-name"></div>
       </div>
     </div>
+
   </div>
 
 <script>
-  const input    = document.getElementById('fullName');
-  const namePrev = document.getElementById('namePreview');
-  const nameExp  = document.getElementById('nameExport');
+  const input = document.getElementById("fullName");
+  const namePrev = document.getElementById("namePreview");
+  const nameExpo = document.getElementById("nameExport");
 
   function updateName(){
-    const v = (input.value || '').trim();
+    const v = input.value.trim();
     if(v){
-      namePrev.style.display = 'block';
-      namePrev.textContent   = v;
-      nameExp .style.display = 'block';
-      nameExp .textContent   = v;
-    }else{
-      namePrev.style.display = 'none';
-      nameExp .style.display = 'none';
+      namePrev.style.display = "block";
+      namePrev.textContent = v;
+
+      nameExpo.style.display = "block";
+      nameExpo.textContent = v;
+    } else {
+      namePrev.style.display = "none";
+      nameExpo.style.display = "none";
     }
   }
-  input.addEventListener('input', updateName);
 
-  document.getElementById('downloadBtn').addEventListener('click', async () => {
-    const v = (input.value || '').trim();
-    if(!v){ alert('اكتب الاسم أولاً'); return; }
+  input.addEventListener("input", updateName);
 
-    const node   = document.querySelector('.export-card');
+  document.getElementById("downloadBtn").onclick = async () => {
+    const v = input.value.trim();
+    if(!v){ alert("اكتب الاسم أولاً"); return; }
+
+    const zone = document.querySelector(".export-card");
+    const canvas = await html2canvas(zone, { scale:2, useCORS:true });
+
+    const a = document.createElement("a");
+    a.download = v + ".png";
+    a.href = canvas.toDataURL("image/png");
+    a.click();
+  };
+</script>
+
+</body>
+</html>
