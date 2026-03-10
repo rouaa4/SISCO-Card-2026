@@ -48,8 +48,8 @@
       border:2px solid #0c4a6e55;
       font-size:18px;
       margin-bottom:10px;
-      font-family:"Noto Kufi Arabic", sans-serif;
       font-weight:400;
+      font-family:"Noto Kufi Arabic", sans-serif;
     }
 
     input:focus{
@@ -85,25 +85,22 @@
       background:url('./assets/eid-card-base.png') center/cover no-repeat;
     }
 
-    /* =======================
-       Preview Name (Website)
-       ======================= */
+    /* Preview name */
     .name-place{
       position:absolute;
-      bottom:17px;   /* كما طلبتي */
+      bottom:13px;               /* ← معاينة كما طلبتي */
       width:100%;
       text-align:center;
       font-family:"Noto Kufi Arabic", sans-serif;
       font-size:16px;
       font-weight:600;
       color:#6A5843;
+      text-shadow:0 1px 2px rgba(0,0,0,0.35);
       display:none;
       z-index:5;
     }
 
-    /* =======================
-       Export Name (PNG file)
-       ======================= */
+    /* Export PNG (final downloaded card) */
     .export-zone{
       position:fixed;
       left:-9999px;
@@ -121,13 +118,14 @@
 
     .export-name{
       position:absolute;
-      bottom:23px;   /* مكافئ ومضبوط للصورة بعد التحميل */
+      bottom:17px;              /* ← EXPORT مضبوط حسب طلبك */
       width:100%;
       text-align:center;
       font-family:"Noto Kufi Arabic", sans-serif;
-      font-size:20px;  /* يعادل 16px في التصدير */
+      font-size:20px;           /* مكافئ لـ 16px في التصدير */
       font-weight:600;
       color:#6A5843;
+      text-shadow:0 1px 2px rgba(0,0,0,0.35);
       display:none;
       z-index:5;
     }
