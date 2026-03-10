@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SISCO Eid Mubarak 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com?v=9">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js?v=9"></script>
+  <style>
+    :root{ --card-w:600px; --card-h:600px; --ink:#222; }
+    *{box-sizing:border-box}
+    body{ margin:0; padding:20px; background:#f3efe7; font-family:"Noto Kufi Arabic", system-ui, -apple-system, Segoe UI, Arial, sans-serif; color:#222; }
+    .app{max-width:800px; margin:0 auto; display:grid; gap:14px}
+    .panel{ background:#fff; border:1px solid #e8e5df; border-radius:14px; padding:14px 16px; box-shadow:0 6px 20px rgba(0,0,0,.04)}
+    .panel h2{ font-size:22px; text-align:center; color:#0f172a; margin:0 0 10px; font-weight:900 }
+    .row{display:grid; grid-template-columns: 1fr auto; gap:10px; align-items:center}
+    label{font-weight:800;color:#0f172a; grid-column:1 / -1}
+    input[type="text"]{width:100%; padding:14px 16px; border:2px solid #0c4a6e33; background:#fff; border-radius:12px; font-size:18px}
+    input[type="text"]:focus{outline:none; border-color:#0c4a6e; box-shadow:0 0 0 3px #0c4a6e22}
+    .btn{ background:#0c4a6e; color:#fff; border:0; padding:12px 16px; border-radius:10px; font-weight:800; cursor:pointer }
+    .note{font-size:12px; color:#0f172a}
+
+    .preview{display:flex; justify-content:center}
+    .card{ position:relative; width:min(100%, 600px); aspect-ratio:1/1; border-radius:14px; overflow:hidden; background:#eee url('./assets/eid-card-base.png?v=9') center/cover no-repeat; border:1px solid #e8e5df; }
+
+    .name-layer{ position:absolute; left:50%; transform:translateX(-50%); bottom:62px; width:92%; text-align:center; color:var(--ink); padding:0 8px; z-index:5 }
+    .name-text{ margin:0 auto; font-weight:700; color:#222; line-height:1.2; font-size:22px; max-width:100%; display:none; direction:rtl; text-shadow:0 1px 0 #fff }
+
+    .export-stage{position:fixed; left:-99999px; top:-99999px; width:var(--card-w); height:var(--card-h)}
+    .export-card{position:relative; width:100%; height:100%; background:#eee url('./assets/eid-card-base.png?v=9') center/cover no-repeat; }
+    .export-name{ position:absolute; left:50%; transform:translateX(-50%); bottom:88px; width:90%; text-align:center; color:#222; font-weight:700; font-size:34px; text-shadow:0 1px 0 #fff; white-space:nowrap; display:none; z-index:5 }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <div class="panel">
+      <h2>SISCO Eid Mubarak 2026 — اكتب اسمك هنا 👇 / Type your name below 👇</h2>
+      <div class="row">
+        <label for="fullName">اكتب اسمك هنا 👇 | Type your name here 👇</label>
+        <input id="fullName" type="text" placeholder="اكتب الاسم هنا | Type your name here" autocomplete="off" autocapitalize="none" autofocus oninput="window.__updateName && window.__updateName()" onkeyup="window.__updateName && window.__updateName()" onchange="window.__updateName && window.__updateName()" />
+        <button class="btn" id="downloadBtn">Download Card</button>
+      </div>
+      <div class="note" style="margin-top:6px;font-weight:700">✍️ رجاءً اكتب الاسم في الحقل أعلاه، ثم اضغط "Download Card". | ✍️ Please type your name above, then click "Download Card".</div>
+    </div>
+
+    <div class="panel preview">
+      <div class="card" id="previewCard" aria-label="معاينة البطاقة">
+        <div class="name-layer"><span id="nameEl" class="name-text"></span></div>
+      </div>
+    </div>
+
+    <div class="export-stage" aria-hidden="true"><div id="exportRoot"></div></div>
+  </div>
+
+  <script>
+    const input = document.getElementById('fullName');
+    const nameEl = document.getElementById('nameEl');
+    const exportRoot = document.getElementById('exportRoot');
+
+    function isArabic(t){return /[\u0600-\u06FF]/.test(t)}
+    function fitText(el, maxPx, minPx){ let s=maxPx; el.style.fontSize=s+'px'; while(el.scrollWidth>el.parentElement.clientWidth && s>minPx){ s--; el.style.fontSize=s+'px'; } }
+
+    function updateName(){
+      const v=(input.value||'').trim();
+      if(v){
+        nameEl.style.display='inline-block';
+        nameEl.textContent=v;
+        const ar=isArabic(v);
+        nameEl.style.direction= ar? 'rtl':'ltr';
+        nameEl.style.fontFamily= ar? '"Noto Kufi Arabic", sans-serif':'"Poppins", sans-serif';
+        nameEl.style.letterSpacing= ar? '0':'.3px';
+        fitText(nameEl, 24, 16);
+      }else{
+        nameEl.textContent='';
+        nameEl.style.display='none';
+      }
+    }
+    window.__updateName = updateName;
+
+    function buildExportNode(){
+      const v=(input.value||'').trim();
+      exportRoot.innerHTML = `<div class=\"export-card\" style=\"font-family:'Noto Kufi Arabic','Poppins',sans-serif;\"><div id=\"exportName\" class=\"export-name\"></div></div>`;
+      const exportName=document.getElementById('exportName');
+      if(v){
+        exportName.style.display='block';
+        exportName.textContent=v;
+        const ar=isArabic(v);
+        exportName.style.direction= ar? 'rtl':'ltr';
+        exportName.style.fontFamily= ar? '"Noto Kufi Arabic", sans-serif':'"Poppins", sans-serif';
+        exportName.style.letterSpacing= ar? '0':'.3px';
+        fitText(exportName, 36, 22);
+      } else {
+        exportName.textContent='';
+        exportName.style.display='none';
+      }
+    }
+
+    async function downloadCard(){
+      const v = (document.getElementById('fullName').value || '').trim();
+      if(!v){ alert('الرجاء كتابة الاسم قبل تنزيل البطاقة. / Please type a name before downloading.'); return; }
+      buildExportNode();
+      const node = exportRoot.firstElementChild;
+      const canvas = await html2canvas(node, {backgroundColor:null, scale:1, useCORS:true});
+      const a=document.createElement('a');
+      const safe=(v||'Eid Card').replace(/[^\p{L}\p{N}\s-_]/gu,'').trim();
+      a.download=`${safe || 'Eid Card'}.png`;
+      a.href=canvas.toDataURL('image/png');
+      a.click();
+    }
+
+    function readQueryName(){ const n=new URLSearchParams(location.search).get('name'); if(n){ input.value=decodeURIComponent(n); updateName(); } }
+
+    // Full redundancy: bind *multiple* ways + periodic refresh to defeat caching/autofill quirks
+    ['input','change','keyup','paste'].forEach(e=>input.addEventListener(e, updateName));
+    const obs = new MutationObserver(updateName); obs.observe(input, {attributes:true, attributeFilter:['value']});
+    setInterval(updateName, 250);
+
+    window.addEventListener('load', ()=>{ readQueryName(); setTimeout(updateName, 80); try{ input.focus(); }catch(e){} });
+    document.getElementById('downloadBtn').addEventListener('click', downloadCard);
+  </script>
+</body>
+</html>
