@@ -15,10 +15,11 @@
     :root{
       --name-color:#6A5843;
       --shadow:0 1px 3px rgba(0,0,0,.45);
-      --preview-bottom:14px;   /* مكان الاسم على الموقع */
-      --export-bottom:17px;    /* مكان الاسم في الصورة المصدّرة */
+      --preview-bottom:14px; /* مكان الاسم على الموقع */
+      --export-bottom:17px;  /* مكان الاسم في الصورة المصدّرة */
     }
 
+    html,body{height:100%}
     body{
       margin:0;
       padding:20px;
@@ -27,7 +28,12 @@
       color:#222;
     }
 
-    .app{max-width:780px; margin:0 auto; display:grid; gap:16px}
+    .app{
+      max-width:780px;
+      margin:0 auto;
+      display:grid;
+      gap:16px;
+    }
 
     h2{
       text-align:center;
@@ -54,6 +60,7 @@
       font-size:18px;
       font-family:"Noto Kufi Arabic", sans-serif;
     }
+    input::placeholder{color:#6b7280}
     input:focus{outline:none; border-color:#0c4a6e; box-shadow:0 0 0 3px #0c4a6e33}
 
     .btn{
@@ -98,7 +105,7 @@
       text-align:center;
       color:var(--name-color);
       font-family:"Noto Kufi Arabic", sans-serif;
-      font-size:20px;    /* ≈ 16px في المعاينة */
+      font-size:20px;   /* ≈ 16px في المعاينة */
       font-weight:600;
       text-shadow:var(--shadow);
       display:none; z-index:10;
@@ -123,3 +130,46 @@
       </div>
     </div>
 
+    <!-- Export -->
+    <div class="export-stage" aria-hidden="true">
+      <div class="export-card">
+        <div id="nameExport" class="export-name"></div>
+      </div>
+    </div>
+  </div>
+
+<script>
+  const input    = document.getElementById('fullName');
+  const namePrev = document.getElementById('namePreview');
+  const nameExp  = document.getElementById('nameExport');
+
+  function updateName(){
+    const v = (input.value || '').trim();
+    if(v){
+      namePrev.style.display = 'block';
+      namePrev.textContent   = v;
+      nameExp .style.display = 'block';
+      nameExp .textContent   = v;
+    }else{
+      namePrev.style.display = 'none';
+      nameExp .style.display = 'none';
+    }
+  }
+  input.addEventListener('input', updateName);
+
+  document.getElementById('downloadBtn').addEventListener('click', async () => {
+    const v = (input.value || '').trim();
+    if(!v){ alert('اكتب الاسم أولاً'); return; }
+
+    const node   = document.querySelector('.export-card');
+    /* دقة أعلى للتصدير */
+    const canvas = await html2canvas(node, { scale:2, useCORS:true });
+
+    const a      = document.createElement('a');
+    a.download   = v + '.png';
+    a.href       = canvas.toDataURL('image/png');
+    a.click();
+  });
+</script>
+</body>
+</html>
