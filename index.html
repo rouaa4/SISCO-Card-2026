@@ -3,19 +3,19 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SISCO Eid Mubarak 2026 — Design 1</title>
+  <title>SISCO Eid Mubarak 2026</title>
 
   <!-- Load Noto Kufi Arabic correctly -->
   <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <!-- Load html2canvas correctly -->
-  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 
   <style>
     :root{
       --name-color:#6A5843;       /* لون الاسم */
       --shadow:0 1px 3px rgba(0,0,0,.45);
-      --preview-bottom:13px;      /* مكان الاسم على الموقع */
+      --preview-bottom:14px;      /* مكان الاسم على الموقع */
       --export-bottom:17px;       /* مكان الاسم في الصورة المصدّرة */
     }
 
@@ -72,19 +72,19 @@
     .card{
       width:500px; aspect-ratio:1/1;
       position:relative; border-radius:14px; overflow:hidden;
-      background:url('./assets/eid-card1-base.png') center/cover no-repeat;
+      background:url('./assets/eid-card-base.png') center/cover no-repeat;
       border:1px solid #e6e0d6;
     }
 
-    /* الاسم في المعاينة (الموقع) */
+    /* الاسم في المعاينة (على الموقع) */
     .name-place{
       position:absolute; left:0; right:0;
       bottom:var(--preview-bottom);
       text-align:center;
       color:var(--name-color);
       font-family:"Noto Kufi Arabic", sans-serif;
-      font-size:20px;            /* أكبر من السابق */
-      font-weight:500;           /* أرفع من 600 */
+      font-size:16px;
+      font-weight:600;
       text-shadow:var(--shadow);
       display:none; z-index:10;
     }
@@ -93,7 +93,7 @@
     .export-stage{position:fixed; left:-99999px; top:-99999px; width:600px; height:600px}
     .export-card{
       position:relative; width:600px; height:600px;
-      background:url('./assets/eid-card1-base.png') center/cover no-repeat;
+      background:url('./assets/eid-card-base.png') center/cover no-repeat;
     }
 
     /* الاسم داخل الصورة عند التحميل */
@@ -103,8 +103,8 @@
       text-align:center;
       color:var(--name-color);
       font-family:"Noto Kufi Arabic", sans-serif;
-      font-size:24px;            /* ≈ 20px للموقع */
-      font-weight:500;           /* أرفع */
+      font-size:20px;            /* ≈ 16px في المعاينة */
+      font-weight:600;
       text-shadow:var(--shadow);
       display:none; z-index:10;
     }
@@ -146,14 +146,13 @@
     if(v){
       namePrev.style.display = 'block';
       namePrev.textContent   = v;
-      nameExp.style.display  = 'block';
-      nameExp.textContent    = v;
+      nameExp .style.display = 'block';
+      nameExp .textContent   = v;
     }else{
       namePrev.style.display = 'none';
-      nameExp.style.display  = 'none';
+      nameExp .style.display = 'none';
     }
   }
-
   input.addEventListener('input', updateName);
 
   document.getElementById('downloadBtn').addEventListener('click', async () => {
@@ -161,12 +160,3 @@
     if(!v){ alert('اكتب الاسم أولاً'); return; }
 
     const node   = document.querySelector('.export-card');
-    const canvas = await html2canvas(node, { scale:2, useCORS:true });
-    const a      = document.createElement('a');
-    a.download   = v + '.png';
-    a.href       = canvas.toDataURL('image/png');
-    a.click();
-  });
-</script>
-</body>
-</html>
